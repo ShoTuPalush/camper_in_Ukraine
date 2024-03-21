@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/camper_in_ukraine/static/css/main.58f77d37.css",
+    "main.js": "/camper_in_ukraine/static/js/main.0c89ea85.js",
+    "static/js/989.dfbddd11.chunk.js": "/camper_in_ukraine/static/js/989.dfbddd11.chunk.js",
+    "static/js/277.6398b136.chunk.js": "/camper_in_ukraine/static/js/277.6398b136.chunk.js",
+    "static/js/879.e97a82bc.chunk.js": "/camper_in_ukraine/static/js/879.e97a82bc.chunk.js",
+    "static/js/131.cac84147.chunk.js": "/camper_in_ukraine/static/js/131.cac84147.chunk.js",
+    "static/media/Inter-SemiBold.ttf": "/camper_in_ukraine/static/media/Inter-SemiBold.6058d3da655fb35169c2.ttf",
+    "static/media/Inter-Medium.ttf": "/camper_in_ukraine/static/media/Inter-Medium.3f7acfe50aad7ad68548.ttf",
+    "static/media/Inter-Regular.ttf": "/camper_in_ukraine/static/media/Inter-Regular.9ca9ba81e9dcaa12b3a1.ttf",
+    "static/media/camper_bg.jpg": "/camper_in_ukraine/static/media/camper_bg.10d5e6c7c42cd62569e5.jpg",
+    "static/media/icons.svg": "/camper_in_ukraine/static/media/icons.70375e48ee08758fc19203292b12b7e3.svg",
+    "index.html": "/camper_in_ukraine/index.html",
+    "main.58f77d37.css.map": "/camper_in_ukraine/static/css/main.58f77d37.css.map",
+    "main.0c89ea85.js.map": "/camper_in_ukraine/static/js/main.0c89ea85.js.map",
+    "989.dfbddd11.chunk.js.map": "/camper_in_ukraine/static/js/989.dfbddd11.chunk.js.map",
+    "277.6398b136.chunk.js.map": "/camper_in_ukraine/static/js/277.6398b136.chunk.js.map",
+    "879.e97a82bc.chunk.js.map": "/camper_in_ukraine/static/js/879.e97a82bc.chunk.js.map",
+    "131.cac84147.chunk.js.map": "/camper_in_ukraine/static/js/131.cac84147.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.58f77d37.css",
+    "static/js/main.0c89ea85.js"
+  ]
+}

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkcamper_in_ukraine=self.webpackChunkcamper_in_ukraine||[]).push([[879],{879:(e,a,r)=>{r.r(a),r.d(a,{default:()=>c});var n=r(3),s=r(800),t=r(131),u=r(579);function c(){const e=(0,n.d4)(s.jH);return(0,u.jsx)(u.Fragment,{children:(0,u.jsx)("div",{className:"px-16 ml-auto mr-auto w-[1440px] mt-[50px]",children:(0,u.jsx)(t.X,{adverts:e,bool:!0})})})}}}]);
+//# sourceMappingURL=879.e97a82bc.chunk.js.map
