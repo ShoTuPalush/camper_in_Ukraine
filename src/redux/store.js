@@ -1,41 +1,35 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-// import {
-//   persistStore,
-//   persistReducer,
-//   FLUSH,
-//   REHYDRATE,
-//   PAUSE,
-//   PERSIST,
-//   PURGE,
-//   REGISTER,
-// } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import { catalogReducer } from './catalog/slice';
 
-// const persistBooksConfig = {
-//   key: 'books',
-//   storage,
-//   whitelist: ['saveBooks'],
-// };
-
-// const persistLocalsConfig = {
-//   key: 'theme',
-//   storage,
-//   whitelist: ['theme'],
-// };
+const persistFavoriteConfig = {
+  key: 'favorite',
+  storage,
+  whitelist: ['favorites'],
+};
 
 const rootReducer = combineReducers({
-  catalog: catalogReducer,
+  catalog: persistReducer(persistFavoriteConfig, catalogReducer),
 });
 
 export const store = configureStore({
   reducer: rootReducer,
-  //   middleware: getDefaultMiddleware =>
-  //     getDefaultMiddleware({
-  //       serializableCheck: {
-  //         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-  //       },
-  //     }),
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
-// export const persistor = persistStore(store);
+export const persistor = persistStore(store);
