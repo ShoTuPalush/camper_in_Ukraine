@@ -1,13 +1,11 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
+import { Header } from '../Header/Header';
 
 export const SharedLayot = () => {
   return (
     <>
-      <header>
-        <span>asd </span>
-        <span>xcv</span>
-      </header>
+      <Header />
       <main>
         <Suspense>
           <Outlet />

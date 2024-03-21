@@ -1,12 +1,20 @@
 import { Route, Routes } from 'react-router-dom';
 import { SharedLayot } from './components/SharedLayout/SharedLayout';
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
+import { featchAdver, featchAllAdver } from './redux/catalog/operation';
+import { useDispatch } from 'react-redux';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const CatalogPage = lazy(() => import('./pages/CatalogPage'));
 const FavoritesPage = lazy(() => import('./pages/FavoritesPage'));
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(featchAllAdver());
+    dispatch(featchAdver());
+  }, [dispatch]);
   return (
     <>
       <Routes>
