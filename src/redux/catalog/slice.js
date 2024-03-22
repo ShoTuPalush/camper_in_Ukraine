@@ -33,7 +33,7 @@ const catalogSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(featchAdver.pending, (state, action) => {
+      .addCase(featchAdver.pending, state => {
         state.isLoading = true;
       })
       .addCase(featchAdver.fulfilled, (state, action) => {
