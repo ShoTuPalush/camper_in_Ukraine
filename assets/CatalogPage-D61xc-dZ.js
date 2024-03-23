@@ -1,0 +1,1 @@
+import{u as e,j as s}from"./index-Cj6aghkv.js";import{s as a,C as r}from"./CamperList-Dl-9V8tI.js";function x(){const t=e(a);return s.jsx(s.Fragment,{children:s.jsx("div",{className:"px-16 ml-auto mr-auto w-[1440px] mt-[50px]",children:s.jsx(r,{adverts:t})})})}export{x as default};
