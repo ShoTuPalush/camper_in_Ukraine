@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkcamper_in_ukraine=self.webpackChunkcamper_in_ukraine||[]).push([[989],{989:(e,r,t)=>{t.r(r),t.d(r,{default:()=>a});var n=t(579);function a(){return(0,n.jsx)(n.Fragment,{children:(0,n.jsx)("div",{className:"bg-hero-pattern h-screen bg-no-repeat bg-cover",children:(0,n.jsxs)("h1",{className:"text-center text-6xl font-bold relative top-1/3 text-white",children:["Welcome ",(0,n.jsx)("br",{})," Camper-Rental Service"," "]})})})}}}]);
-//# sourceMappingURL=989.dfbddd11.chunk.js.map
