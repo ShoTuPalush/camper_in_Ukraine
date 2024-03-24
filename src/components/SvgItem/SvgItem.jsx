@@ -16,7 +16,6 @@ export const SvgItem = ({ item, favorite }) => {
         >
           <use href={`${icons}#icon-property`} />
         </svg>
-        ;
       </>
     );
   }
