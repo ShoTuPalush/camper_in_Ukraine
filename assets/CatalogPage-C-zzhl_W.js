@@ -1,0 +1,1 @@
+import{u as t,s as o,a as i,b as c,j as s}from"./index-DTEPcfcZ.js";import{F as n,C as x}from"./Filters-V6n0PBLq.js";function d(){const e=t(o),a=t(i),r=t(c),l=e.btnClick?a:r;return s.jsx(s.Fragment,{children:s.jsxs("div",{className:"px-16 ml-auto mr-auto w-[1440px] mt-[50px] flex gap-[64px]",children:[s.jsx(n,{page:"catalog"}),s.jsx(x,{adverts:l})]})})}export{d as default};
