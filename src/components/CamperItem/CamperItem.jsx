@@ -10,6 +10,7 @@ import { CamperDescription } from '../CamperDescription/CamperDescription';
 import { useState } from 'react';
 import { CamperModal } from '../CamperModal/CamperModal';
 import { SvgItem } from '../SvgItem/SvgItem';
+import { Button } from '../Button/Button';
 
 export const CamperItem = ({ advert }) => {
   const dispatch = useDispatch();
@@ -53,12 +54,7 @@ export const CamperItem = ({ advert }) => {
             truncate={true}
           />
           <FeatureList feature={advert.feature} maxFeature={7} />
-          <button
-            className="mt-6 w-[156px] h-[56px] rounded-[200px] bg-[#e44848] text-white font-medium text-sm tracking-[-0.01em]"
-            onClick={() => modalOpen()}
-          >
-            Show more
-          </button>
+          <Button method={() => modalOpen()}>Show more</Button>
         </div>
         <CamperModal
           isModalOpen={isModalOpen}
