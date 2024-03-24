@@ -20,7 +20,6 @@ export const Filters = ({ page }) => {
   const filtersCatalog = useSelector(selectFilters);
   const filtersFavorite = useSelector(selectFiltersFavorite);
   const filters = page === 'catalog' ? filtersCatalog : filtersFavorite;
-  console.log(page);
   const handleSetFilters = value => {
     if (filters.vehicleEquipment.includes(value)) {
       dispatch(setVehicleEquipment({ page, data: value }));
@@ -41,8 +40,8 @@ export const Filters = ({ page }) => {
     <>
       <div className="w-[360px]">
         <label className="font-medium text-sm text-[#10182899] capitalize relative">
-          <span className="absolute top-[47px] left-[16px]">
-            <SvgItem item={'map-pin'} w={22} h={22} />
+          <span className="absolute top-[47px] left-[16px] w-[22px] h-[22px]">
+            <SvgItem item={'map-pin'} />
           </span>
           location
           <input
@@ -85,11 +84,13 @@ export const Filters = ({ page }) => {
                     name="equipment"
                     onClick={evt => handleSetFilters(evt.target.value)}
                   />
-                  {equipment === 'AC' ? (
-                    <FaWind size={28} />
-                  ) : (
-                    <SvgItem item={equipment} w={32} h={32} />
-                  )}
+                  <div className="h-[32px] w-[32px]">
+                    {equipment === 'AC' ? (
+                      <FaWind size={28} />
+                    ) : (
+                      <SvgItem item={equipment} />
+                    )}
+                  </div>
                   {equipment}
                 </label>
               </li>
@@ -115,7 +116,9 @@ export const Filters = ({ page }) => {
                   )}
                   onClick={evt => handleSetTypeFilters(evt, item)}
                 />
-                <SvgItem item={item} w={40} h={28} />
+                <div className="w-[40px] h-[28px]">
+                  <SvgItem item={item} />
+                </div>
                 {item}
               </label>
             </li>

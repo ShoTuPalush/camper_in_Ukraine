@@ -51,12 +51,12 @@ export const CamperModal = ({ isModalOpen, modalClose, advert }) => {
             <div className="flex justify-between pr-[20px] ">
               <CamperTitle name={advert.name} />
               <button
-                className="flex items-center justify-center 
+                className="flex items-center justify-center h-[32px] w-[32px]
                   "
                 type="button"
                 onClick={() => modalClose()}
               >
-                <SvgItem item={'close'} w={32} h={32} />
+                <SvgItem item={'close'}/>
               </button>
             </div>
             <div className="flex items-center mb-6 ">

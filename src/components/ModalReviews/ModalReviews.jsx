@@ -18,11 +18,11 @@ export const ModalReviews = ({ reviews }) => {
                 </p>
                 <div className="flex gap-[4px]">
                   {[1, 2, 3, 4, 5].map(item => (
-                    <span key={item}>
+                    <span key={item} className="w-[16px] h-[16px]">
                       {item <= review.reviewer_rating ? (
-                        <SvgItem item={'rating'} h={16} w={16} />
+                        <SvgItem item={'rating'} />
                       ) : (
-                        <SvgItem item={'rating-not'} h={16} w={16} />
+                        <SvgItem item={'rating-not'} />
                       )}
                     </span>
                   ))}

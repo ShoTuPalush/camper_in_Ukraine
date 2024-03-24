@@ -11,7 +11,9 @@ export const FeatureList = ({ feature, maxFeature }) => {
                 key={item}
                 className="h-[44px] rounded-[100px] py-[12px] px-[18px] bg-[#f2f4f7] inline-flex items-center"
               >
-                <SvgItem item={item} h={20} w={20} className="mr-1" />
+                <div className="h-[20px] w-[20px] mr-1">
+                  <SvgItem item={item}/>
+                </div>
                 <span className="text-xsm font-medium text-[#101828] capitalize">
                   {feature[item]}
                 </span>

@@ -50,8 +50,41 @@ export const selectAdverts = createSelector(
   }
 );
 
+export const selectAdvertsEdit = createSelector(
+  [selectAllAdvert, selectFavorite],
+  (adverts, favorite) => {
+    let newAdvert = [];
+    newAdvert.push(
+      ...adverts.map(advert => {
+        const isFavorite =
+          favorite.filter(favorit => favorit._id === advert._id).length > 0;
+        let feature = {};
+        advert.adults && (feature.adults = advert.adults + ' adults');
+        advert.transmission && (feature.transmission = advert.transmission);
+        advert.engine && (feature.engine = advert.engine);
+        advert.details.airConditioner && (feature.AC = 'AC');
+        advert.details.kitchen && (feature.kitchen = 'kitchen');
+        advert.details.beds && (feature.beds = advert.details.beds + ' beds');
+        advert.details.TV && (feature.TV = 'TV');
+        advert.details.CD && (feature.CD = 'CD');
+        advert.details.radio && (feature.radio = 'radio');
+        advert.details.hob && (feature.hob = advert.details.hob + ' hob');
+        advert.details.toilet && (feature.toilet = 'toilet');
+        advert.details.shower && (feature.shower = 'shower');
+        advert.details.freezer && (feature.freezer = 'freezer');
+        advert.details.gas && (feature.gas = 'gas');
+        advert.details.water && (feature.water = 'water');
+        advert.details.microwave && (feature.microwave = 'microware');
+        return { ...advert, feature, favorite: isFavorite };
+      })
+    );
+
+    return newAdvert;
+  }
+);
+
 export const selectFilterAdverts = createSelector(
-  [selectAdverts, selectFilters],
+  [selectAdvertsEdit, selectFilters],
   (adverts, filters) => {
     const newAdverts = adverts.filter(advert => {
       if (filters.location !== '') {
@@ -68,7 +101,7 @@ export const selectFilterAdverts = createSelector(
         value === 'fully integrated' && (value = 'fullyIntegrated');
         if (advert.form !== value) {
           return false;
-        }
+        } else console.log(value);
       }
 
       if (filters.vehicleEquipment.length > 0) {

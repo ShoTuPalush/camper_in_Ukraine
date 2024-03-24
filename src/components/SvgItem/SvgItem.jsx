@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import icons from '../../assets/img/icons.svg';
 import { FaWind } from 'react-icons/fa';
 
-export const SvgItem = ({ item, h, w, favorite }) => {
+export const SvgItem = ({ item, favorite }) => {
   if (item === 'property') {
     return (
       <>
@@ -26,11 +26,7 @@ export const SvgItem = ({ item, h, w, favorite }) => {
       {item === 'AC' ? (
         <FaWind size={16} className="mr-[8px]" />
       ) : (
-        <svg
-          className={clsx(
-            `w-[${w}px] h-[${h}px] mr-1 fill-none stroke-[#101828]`
-          )}
-        >
+        <svg className={clsx(`w-full h-full mr-1 fill-none stroke-[#101828]`)}>
           <use href={`${icons}#icon-${item}`} />
         </svg>
       )}

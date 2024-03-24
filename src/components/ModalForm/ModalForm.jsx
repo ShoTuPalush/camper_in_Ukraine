@@ -106,8 +106,8 @@ export const ModalForm = () => {
           >
             booking date
           </span>
-          <span className="absolute right-[18px] top-[15px]">
-            <SvgItem item={'data-picker'} w={20} h={20} />
+          <span className="absolute right-[18px] top-[15px] w-[20px] h-[20px]">
+            <SvgItem item={'data-picker'} />
           </span>
         </label>
         <label className="relative w-full h-[114px] rounded-[10px] mb-[24px] block bg-[#f7f7f7] text-[#838383]">
