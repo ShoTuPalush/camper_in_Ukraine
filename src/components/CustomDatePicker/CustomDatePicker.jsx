@@ -15,6 +15,7 @@ export const CustomDataPicker = ({ customInput, setSelectedDatea }) => {
           setSelectedDate(date);
           setSelectedDatea(date);
         }}
+        minDate={new Date()}
         customInput={customInput}
         dateFormat={'dd.MM.yyyy'}
         calendarStartDay={1}

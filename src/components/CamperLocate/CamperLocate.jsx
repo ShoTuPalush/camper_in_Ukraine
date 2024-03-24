@@ -1,13 +1,11 @@
-import icons from '../../assets/img/icons.svg';
+import { SvgItem } from '../SvgItem/SvgItem';
 
 export const CamperLocate = ({ location }) => {
   return (
     <>
-      <svg className="w-[16px] h-[16px] fill-white stroke-black mr-1">
-        <use href={`${icons}#icon-map-pin`} />
-      </svg>
+      <SvgItem item={'map-pin'} h={16} w={16} />
       <p className="text-sm font-normal text-[#101828]">
-        {location.split(',')[1]}, {location.split(',')[0]}
+        {location.split(', ')[1]}, {location.split(', ')[0]}
       </p>
     </>
   );

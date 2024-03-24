@@ -1,5 +1,4 @@
 import Modal from 'react-modal';
-import icons from '../../assets/img/icons.svg';
 import { CamperTitle } from '../CamperTitle/CamperTitle';
 import { CamperRating } from '../CamperRating/CamperRating';
 import { CamperLocate } from '../CamperLocate/CamperLocate';
@@ -11,6 +10,7 @@ import clsx from 'clsx';
 import { ModalFeature } from '../ModalFeature/ModalFeature';
 import { ModalReviews } from '../ModalReviews/ModalReviews';
 import { ModalForm } from '../ModalForm/ModalForm';
+import { SvgItem } from '../SvgItem/SvgItem';
 
 const customStyles = {
   overlay: {
@@ -51,14 +51,12 @@ export const CamperModal = ({ isModalOpen, modalClose, advert }) => {
             <div className="flex justify-between pr-[20px] ">
               <CamperTitle name={advert.name} />
               <button
-                className="flex items-center justify-center
+                className="flex items-center justify-center 
                   "
                 type="button"
                 onClick={() => modalClose()}
               >
-                <svg className="stroke-black w-[32px] h-[32px]">
-                  <use href={`${icons}#icon-close`} />
-                </svg>
+                <SvgItem item={'close'} w={32} h={32} />
               </button>
             </div>
             <div className="flex items-center mb-6 ">

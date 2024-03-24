@@ -1,4 +1,4 @@
-import icons from '../../assets/img/icons.svg';
+import { SvgItem } from '../SvgItem/SvgItem';
 
 export const FeatureList = ({ feature, maxFeature }) => {
   return (
@@ -11,9 +11,7 @@ export const FeatureList = ({ feature, maxFeature }) => {
                 key={item}
                 className="h-[44px] rounded-[100px] py-[12px] px-[18px] bg-[#f2f4f7] inline-flex items-center"
               >
-                <svg className="w-[20px] h-[20px] mr-1 fill-[#F2F4F7] stroke-[#101828]">
-                  <use href={`${icons}#icon-${item}`} />
-                </svg>
+                <SvgItem item={item} h={20} w={20} className="mr-1" />
                 <span className="text-xsm font-medium text-[#101828] capitalize">
                   {feature[item]}
                 </span>

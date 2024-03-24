@@ -1,7 +1,5 @@
 import { useDispatch } from 'react-redux';
 import { changeFavorite } from '../../redux/catalog/slice';
-import clsx from 'clsx';
-import icons from '../../assets/img/icons.svg';
 import { FeatureList } from '../FeatureList/FeatureList';
 import { CamperImg } from '../CamperImg/CamperImg';
 import { CamperTitle } from '../CamperTitle/CamperTitle';
@@ -11,6 +9,7 @@ import { CamperLocate } from '../CamperLocate/CamperLocate';
 import { CamperDescription } from '../CamperDescription/CamperDescription';
 import { useState } from 'react';
 import { CamperModal } from '../CamperModal/CamperModal';
+import { SvgItem } from '../SvgItem/SvgItem';
 
 export const CamperItem = ({ advert }) => {
   const dispatch = useDispatch();
@@ -32,21 +31,15 @@ export const CamperItem = ({ advert }) => {
       <li className="border border-[rgba(16, 24, 40, 0.2)] rounded-[20px] p-6 w-[888px] h-[358px] flex gap-6 mb-[32px]">
         <CamperImg img={advert?.gallery[0]} name={advert.name} />
         <div className="w-[526px]">
-          <div className="flex justify-between mb-2">
+          <div className="flex justify-between mb-2 h-[30px] ">
             <CamperTitle name={advert.name} />
             <div className="flex ">
               <CamperPrice price={advert.price} modal={false} />
-              <button onClick={() => handleFavorite(advert)}>
-                <svg
-                  className={clsx(
-                    'w-[24px] h-[24px] ',
-                    advert.favorite
-                      ? 'stroke-[#e44848] fill-[#e44848]'
-                      : 'stroke-[#101828] fill-white'
-                  )}
-                >
-                  <use href={`${icons}#icon-property`} />
-                </svg>
+              <button
+                className="pt-[2px]"
+                onClick={() => handleFavorite(advert)}
+              >
+                <SvgItem item={'property'} favorite={advert.favorite} />
               </button>
             </div>
           </div>

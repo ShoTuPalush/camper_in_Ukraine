@@ -1,4 +1,4 @@
-import icons from '../../assets/img/icons.svg';
+import { SvgItem } from '../SvgItem/SvgItem';
 
 export const ModalReviews = ({ reviews }) => {
   return (
@@ -20,13 +20,9 @@ export const ModalReviews = ({ reviews }) => {
                   {[1, 2, 3, 4, 5].map(item => (
                     <span key={item}>
                       {item <= review.reviewer_rating ? (
-                        <svg className="w-[16px] h-[16px]">
-                          <use href={`${icons}#icon-rating`} />
-                        </svg>
+                        <SvgItem item={'rating'} h={16} w={16} />
                       ) : (
-                        <svg className="w-[16px] h-[16px] stroke-[#f2f4f7]">
-                          <use href={`${icons}#icon-rating-not`} />
-                        </svg>
+                        <SvgItem item={'rating-not'} h={16} w={16} />
                       )}
                     </span>
                   ))}

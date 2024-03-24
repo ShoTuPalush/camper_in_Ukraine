@@ -1,4 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
+import { selectFilters, selectFiltersFavorite } from '../filter/selector';
+import uniq from 'lodash.uniq';
 
 export const selectBackAdverts = state => state.catalog.advert;
 export const selectAllAdvert = state => state.catalog.allAdvert;
@@ -30,18 +32,115 @@ export const selectAdverts = createSelector(
         advert.details.airConditioner && (feature.AC = 'AC');
         advert.details.kitchen && (feature.kitchen = 'kitchen');
         advert.details.beds && (feature.beds = advert.details.beds + ' beds');
+        advert.details.TV && (feature.TV = 'TV');
         advert.details.CD && (feature.CD = 'CD');
-        advert.details.radio && (feature.radio = 'Radio');
+        advert.details.radio && (feature.radio = 'radio');
         advert.details.hob && (feature.hob = advert.details.hob + ' hob');
-        advert.details.toilet && (feature.toilet = 'Toilet');
-        advert.details.shower && (feature.shower = 'Shower');
-        advert.details.freezer && (feature.freezer = 'Freezer');
-        advert.details.gas && (feature.gas = 'Gas');
-        advert.details.water && (feature.water = 'Water');
-        advert.details.microwave && (feature.microwave = 'Microware');
+        advert.details.toilet && (feature.toilet = 'toilet');
+        advert.details.shower && (feature.shower = 'shower');
+        advert.details.freezer && (feature.freezer = 'freezer');
+        advert.details.gas && (feature.gas = 'gas');
+        advert.details.water && (feature.water = 'water');
+        advert.details.microwave && (feature.microwave = 'microware');
         return { ...advert, feature, favorite: isFavorite };
       })
     );
+
     return newAdvert;
+  }
+);
+
+export const selectFilterAdverts = createSelector(
+  [selectAdverts, selectFilters],
+  (adverts, filters) => {
+    const newAdverts = adverts.filter(advert => {
+      if (filters.location !== '') {
+        const locationSplit = advert.location.toLowerCase().split(', ');
+        const location = `${locationSplit[1]}, ${locationSplit[0]}`;
+        if (!location.includes(filters.location.toLowerCase())) {
+          return false;
+        }
+      }
+
+      if (filters.vehicleType !== '') {
+        let value = filters.vehicleType;
+        value === 'van' && (value = 'panelTruck');
+        value === 'fully integrated' && (value = 'fullyIntegrated');
+        if (advert.form !== value) {
+          return false;
+        }
+      }
+
+      if (filters.vehicleEquipment.length > 0) {
+        for (const feature of filters.vehicleEquipment) {
+          if (feature === 'automatic') {
+            if (advert.transmission !== 'automatic') return false;
+          } else {
+            if (feature === 'shower/wc') {
+              if (advert.feature.shower !== 'shower') return false;
+            } else {
+              if (advert.feature[feature] === undefined) {
+                return false;
+              }
+            }
+          }
+        }
+      }
+      return true;
+    });
+    return newAdverts;
+  }
+);
+
+export const selectFilterFavoriteAdverts = createSelector(
+  [selectFavorite, selectFiltersFavorite],
+  (adverts, filters) => {
+    const newAdverts = adverts.filter(advert => {
+      if (filters.location !== '') {
+        const locationSplit = advert.location.toLowerCase().split(', ');
+        const location = `${locationSplit[1]}, ${locationSplit[0]}`;
+        if (!location.includes(filters.location.toLowerCase())) {
+          return false;
+        }
+      }
+
+      if (filters.vehicleType !== '') {
+        let value = filters.vehicleType;
+        value === 'van' && (value = 'panelTruck');
+        value === 'fully integrated' && (value = 'fullyIntegrated');
+        if (advert.form !== value) {
+          return false;
+        }
+      }
+
+      if (filters.vehicleEquipment.length > 0) {
+        for (const feature of filters.vehicleEquipment) {
+          if (feature === 'automatic') {
+            if (advert.transmission !== 'automatic') return false;
+          } else {
+            if (feature === 'shower/wc') {
+              if (advert.feature.shower !== 'shower') return false;
+            } else {
+              if (advert.feature[feature] === undefined) {
+                return false;
+              }
+            }
+          }
+        }
+      }
+      return true;
+    });
+    return newAdverts;
+  }
+);
+
+export const selectLocationSelect = createSelector(
+  [selectAllAdvert],
+  adverts => {
+    const locationSelect = adverts.map(advert => {
+      const locationSplit = advert.location.split(', ');
+      return `${locationSplit[1]}, ${locationSplit[0]}`;
+    });
+    return uniq(locationSelect);
   }
 );

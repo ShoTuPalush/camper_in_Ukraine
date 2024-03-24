@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import icons from '../../assets/img/icons.svg';
 import clsx from 'clsx';
-
 import { useForm } from 'react-hook-form';
-import { CustomDataPicker } from '../CustomDatePicker/CustomDatePicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import toast from 'react-hot-toast';
+import { CustomDataPicker } from '../CustomDatePicker/CustomDatePicker';
+import { SvgItem } from '../SvgItem/SvgItem';
 
 const emailPatern =
   // eslint-disable-next-line no-useless-escape
@@ -108,9 +107,7 @@ export const ModalForm = () => {
             booking date
           </span>
           <span className="absolute right-[18px] top-[15px]">
-            <svg className="stroke-[#101828] fill-none w-[20px] h-[20px]">
-              <use href={`${icons}#icon-data-picker`} />
-            </svg>
+            <SvgItem item={'data-picker'} w={20} h={20} />
           </span>
         </label>
         <label className="relative w-full h-[114px] rounded-[10px] mb-[24px] block bg-[#f7f7f7] text-[#838383]">
