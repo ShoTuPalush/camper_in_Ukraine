@@ -3,7 +3,7 @@ import icons from '../../assets/img/icons.svg';
 export const FeatureList = ({ feature, maxFeature }) => {
   return (
     <>
-      <ul className="mb-6 flex gap-[8px] flex-wrap">
+      <ul className="flex gap-[8px] flex-wrap">
         {Object.keys(feature).map(
           (item, index) =>
             index < maxFeature && (
