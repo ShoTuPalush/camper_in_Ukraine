@@ -23,6 +23,30 @@
   font-weight: 600;
   font-style: normal;
 }
+
+* {
+  transition: all ease-out 200ms;
+}
+
 .no-scroll {
   overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  position: relative;
+  right: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b8b6b6;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #aca9a9;
 }

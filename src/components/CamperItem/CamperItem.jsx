@@ -35,7 +35,7 @@ export const CamperItem = ({ advert }) => {
           <div className="flex justify-between mb-2">
             <CamperTitle name={advert.name} />
             <div className="flex ">
-              <CamperPrice price={advert.price} />
+              <CamperPrice price={advert.price} modal={false} />
               <button onClick={() => handleFavorite(advert)}>
                 <svg
                   className={clsx(

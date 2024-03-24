@@ -1,22 +1,39 @@
 import { useState } from 'react';
 import icons from '../../assets/img/icons.svg';
-import DatePicker from 'react-datepicker';
-
-import 'react-datepicker/dist/react-datepicker.css';
+import clsx from 'clsx';
 
 import { useForm } from 'react-hook-form';
 import { CustomDataPicker } from '../CustomDatePicker/CustomDatePicker';
-import clsx from 'clsx';
+import 'react-datepicker/dist/react-datepicker.css';
+import toast from 'react-hot-toast';
+
+const emailPatern =
+  // eslint-disable-next-line no-useless-escape
+  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export const ModalForm = () => {
-  const [startDate, setStartDate] = useState();
-  const { register, handleSubmit, reset } = useForm();
+  const [startDate, setStartDate] = useState(new Date());
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      name: '',
+      email: '',
+      date: '',
+      comment: '',
+    },
+  });
 
-  const onSubmit = () => {};
+  const onSubmit = () => {
+    window.location.reload();
+  };
+
   return (
     <>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit(onSubmit)}
         className="p-[24px] w-[448px] h-[532px] rounded-[10px] border border-[rgba(16, 24, 40, 0.2)]"
       >
         <h4 className="text-lg font-semibold text-[#101828] mb-[8px]">
@@ -30,8 +47,15 @@ export const ModalForm = () => {
           <input
             className="peer w-full h-full rounded-[10px] focus:outline-none pl-[18px] bg-[#f7f7f7] text-xsm"
             type="text"
+            name="name"
             placeholder=" "
-            {...register('name', { required: true, maxLength: 20 })}
+            {...register('name', {
+              required: {
+                value: true,
+                message: 'Name is required',
+              },
+              maxLength: { value: 20, message: 'Name must be < 20' },
+            })}
           />
           <span
             className="absolute capitalize left-[18px] top-[16px] bg-transparent text-xsm
@@ -40,13 +64,16 @@ export const ModalForm = () => {
             name
           </span>
         </label>
-
         <label className="relative w-full h-[56px] rounded-[10px] mb-[14px] block bg-[#f7f7f7] text-[#838383]">
           <input
             className="peer w-full h-full rounded-[10px] focus:outline-none pl-[18px] bg-[#f7f7f7] text-xsm"
             type="text"
+            name="email"
             placeholder=" "
-            {...register('email', { required: true, maxLength: 20 })}
+            {...register('email', {
+              required: { value: true, message: 'Email is required' },
+              pattern: { value: emailPatern, message: 'Email is not valid' },
+            })}
           />
           <span
             className="absolute capitalize left-[18px] top-[16px] bg-transparent text-xsm
@@ -57,23 +84,18 @@ export const ModalForm = () => {
         </label>
 
         <label className="relative w-full h-[56px] rounded-[10px] mb-[14px] block bg-[#f7f7f7] text-[#838383]">
-          {/* <input
-            className="peer w-full h-full rounded-[10px] focus:outline-none pl-[18px] bg-[#f7f7f7] text-xsm"
-            type="text"
-            placeholder=" "
-            {...register('date', { required: true, maxLength: 20 })}
-          /> */}
           <CustomDataPicker
             selectedDate={startDate}
-            setSelectedDate={date => {
+            name="date"
+            setSelectedDatea={date => {
               setStartDate(date);
             }}
+            {...register('date')}
             customInput={
               <input
                 className="py-[18px] w-[400px] h-full rounded-[10px] focus:outline-none pl-[18px] bg-[#f7f7f7] text-xsm"
                 type="text"
                 placeholder=" "
-                {...register('date', { required: true, maxLength: 20 })}
               />
             }
           />
@@ -85,7 +107,6 @@ export const ModalForm = () => {
           >
             booking date
           </span>
-
           <span className="absolute right-[18px] top-[15px]">
             <svg className="stroke-[#101828] fill-none w-[20px] h-[20px]">
               <use href={`${icons}#icon-data-picker`} />
@@ -96,6 +117,7 @@ export const ModalForm = () => {
           <textarea
             className="peer w-full h-full rounded-[10px] focus:outline-none pl-[18px] pt-[18px] bg-[#f7f7f7] text-xsm"
             type="text"
+            name="comment"
             placeholder=" "
             {...register('comment')}
           ></textarea>
@@ -107,6 +129,10 @@ export const ModalForm = () => {
           </span>
         </label>
         <button
+          onClick={() =>
+            Object.keys(errors).length > 0 &&
+            toast.error(errors[Object.keys(errors)[0]]?.message)
+          }
           type="submit"
           className="w-[160px] h-[56px] rounded-[200px] bg-[#e44848] text-white font-medium text-sm tracking-[-0.01em]"
         >

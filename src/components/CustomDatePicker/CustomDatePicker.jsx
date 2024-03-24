@@ -3,12 +3,8 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import { CalendarGlobalStyles } from './CustomDatePicker.styled';
 
-export const CustomDataPicker = ({
-  customInput,
-  selectedDate,
-  setSelectedDate,
-}) => {
-  //   const [selectedDate, setSelectedDate] = useState(new Date());
+export const CustomDataPicker = ({ customInput, setSelectedDatea }) => {
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   return (
     <>
@@ -17,6 +13,7 @@ export const CustomDataPicker = ({
         selected={selectedDate}
         onChange={date => {
           setSelectedDate(date);
+          setSelectedDatea(date);
         }}
         customInput={customInput}
         dateFormat={'dd.MM.yyyy'}

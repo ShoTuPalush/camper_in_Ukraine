@@ -5,8 +5,8 @@ export const CamperDescription = ({ description, truncate, widthText }) => {
     <>
       <p
         className={clsx(
-          `w-[${widthText}px]`,
           'text-sm text-[#475467] mb-6',
+          `w-[${widthText}px]`,
           truncate && 'truncate'
         )}
       >
